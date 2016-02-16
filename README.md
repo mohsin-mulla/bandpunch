@@ -3,6 +3,10 @@
 
 A simple Django application that allows a user to add events, that can be purchased by a registered user, using a valid payment method. 
 
+
+This application is **NOT** suitable for a production environment.
+
+
 #### Installation
 1. Change directory to the `bandpunch` folder.
 
