@@ -1,0 +1,26 @@
+{% extends 'ticket/base.html' %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+
+<div class="container">
+	<h1>Artists</h1> <!-- Loop over artists query -->
+	{% if artists %}
+	{% for artist in artists %}
+        <div class="col-md-4">            
+            <div class="thumb">
+                	<div class="caption">
+                    <h4>{{ artist.name }}</h4>
+                    <p>{{ artist.genre }}</p>
+                	</div>
+                <img class="card-img" src="/media/{{ artist.image }}" alt="{{ artist.name }}">
+            </div>
+      </div>
+	{% endfor %}
+	{% else %}
+		<div class="alert alert-danger" role="alert"><strong>Ouch!</strong> There are no artists set.</div>
+	{% endif %}
+</div>
+
+{% endblock %}

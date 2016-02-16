@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+{% load bootstrap3 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% load static %}
+
+<html lang="en">
+  <head>
+  	<title>{% block title %}BandPunch{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Custom styling for Bootstrap -->
+    <link href="{% static "css/bootstrap-custom.css" %}" rel="stylesheet">
+
+    <!-- Carousel for the Index page ONLY -->
+    <link href="{% static "css/carousel.css" %}" rel="stylesheet">
+  </head>
+
+  <body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#headerNav">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span> 
+	      </button>
+	      <a class="navbar-brand" href="/">BandPunch</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="headerNav">
+	      <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Browse <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="/artists">Artists</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/events">Events</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/venues">Venues</a></li>
+                </ul>
+              </li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+			{% if user.is_authenticated %}
+	        	<li><a href="{% url 'auth_logout' %}?next=/"><span class="glyphicon glyphicon-lock"></span> Log Out</a></li>
+			{% else %}
+	        	<li><a href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	        	<li><a href="{% url 'auth_login' %}"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+			{% endif %}
+	        	<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Basket</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+	<div class="push-top"></div>
+	<div class="content">
+		{% block body_block %}{% endblock %}
+	</div>
+
+	<div class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">
+			<p class="navbar-text pull-left">
+				&copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> – BandPunch
+			</p>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li role="presentation"><a href="/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+				<li role="presentation"><a href="/terms"><span class="glyphicon glyphicon-flag"></span> Terms of Use</a></li>
+			</ul>
+		</div>
+	</div>
+
+  	<!-- Bootstrap core JavaScript -->
+    <script src="{% bootstrap_jquery_url %}"></script>
+    <script src="{% static "js/custom.js" %}"></script>
+</html>

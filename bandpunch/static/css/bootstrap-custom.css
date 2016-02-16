@@ -1,0 +1,116 @@
+/* Custom CSS styling for Bootstrap
+ * Modularised so that Bootstrap can be updated!
+ */
+
+/* Centralise search box on the navbar */
+.navbar .navbar-center {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+/* Fixed navbar */
+body {
+  padding-top: 50px;
+}
+
+.content {
+  margin-top: -50px;
+}
+
+.push-top {
+  margin-top: 40px;
+}
+
+.help-block { /* dirty hack to hide the form error messages */
+  display: none;
+}
+
+/* Custom form styling provided by Bootstrap examples */
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="username"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Card styling for views */
+.col-md-4 {
+  padding: 15px;
+}
+.thumb {
+  height: 325px;
+  width: 325px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  line-height: 20px;
+  border: 2px solid #ddd;
+  webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+} 
+.thumb .caption {
+  padding: 70px;
+  opacity: 0;
+  -moz-opacity: 0.5;
+  display: block;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.4);
+  width: 100%;
+  height: 100%;
+  color: #fff !important;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+.thumb a {
+  color: #fff;
+}
+.card-img {
+  max-height: 200%;
+  max-width: 200%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

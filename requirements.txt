@@ -1,0 +1,11 @@
+Django==1.7.4
+Pillow==2.7.0
+django-bootstrap3==5.3.1
+django-carton==1.2.0
+django-prices==0.3.4
+django-registration-redux==1.1
+django-suit==0.2.12
+django-widget-tweaks==1.3
+prices==0.5.4
+six==1.9.0
+virtualenv==12.0.7

@@ -1,0 +1,12 @@
+{% extends 'ticket/base.html' %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+<div class="container">
+	<h1>Your booking has been successful!</h1>
+	{% for reference_number in ref_number %}
+	<p>Your reference number is <strong>{{ reference_number }}</strong></p>
+	{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'ticket/base.html' %}
+
+{% load staticfiles %}
+{% load carton_tags %}
+
+{% block body_block %}
+{% get_cart as cart %}
+
+<div class="container">
+	<h1>Shopping Cart</h1>
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            <span class="glyphicon glyphicon-info-sign"></span> {{ message }}
+            <button type="button" class="close" data-dismiss="alert">×</button>
+        </div>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-14">
+            <table class="table table-hover">
+                        <thead style="{% if cart.total <= 0 %}display: none;{% endif %}">
+                            <tr>
+                                <th>Event</th>
+                                <th class="text-center">Quantity</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Subtotal</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        {% if cart.total > 0 %}
+                            {% for item in cart.items %}
+                        <tbody>
+                            <tr>
+                                <td class="col-sm-8 col-md-6">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="/event/{{ item.product.slug }}">{{ item.product.name }}</a></h4>
+                                            <h5 class="media-heading">on the {{ item.product.date }}</h5>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-sm-2 col-md-2" style="text-align: center">
+                                    <a href="/cart/add?id={{ item.product.id }}"><span class="glyphicon glyphicon-plus"></span></a>
+                                    <p>{{ item.quantity }}</p>                          
+                                    <a href="/cart/remove?id={{ item.product.id }}"><span class="glyphicon glyphicon-minus"></span></a>
+                                </td>
+                                <td class="col-sm-2 col-md-2 text-center">£{{ item.product.price }}</td>
+                                <td class="col-sm-2 col-md-2 text-center">£{{ item.subtotal }}</td>
+                                <td class="col-sm-1 col-md-1">
+                                    <a href="/cart/remove/?id={{ item.product.id }}">
+                                        <button type="button" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-remove"></span> Remove
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td class="text-right"><h3>Total</h3></td>
+                                <td class="text-right"><h3><strong>£{{ total }}</strong></h3></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>
+                                    <a href="/">
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/cart/checkout">
+                                        <button type="button" class="btn btn-success">
+                                            <span class="glyphicon glyphicon-play"></span> Checkout
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    {% else %}
+                        <h1>Your cart is empty!</h1>
+                    {% endif %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

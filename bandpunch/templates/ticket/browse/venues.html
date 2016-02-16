@@ -1,0 +1,27 @@
+{% extends 'ticket/base.html' %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+
+<div class="container">
+	<h1>Venues</h1>
+	{% if venues %}
+	{% for venue in venues %}
+        <div class="col-md-4">            
+            <div class="thumb">
+                	<div class="caption">
+                    <h4>{{ venue.name }}</h4>
+                    <p><span class="glyphicon glyphicon-map-marker"> {{ venue.address }}</p>
+                    <p>Capacity: {{ venue.capacity }}</p>
+                	</div>
+                <img class="card-img" src="/media/{{ venue.image }}" alt="{{ venue.name }}">
+            </div>
+      </div>
+	{% endfor %}
+	{% else %}
+		<div class="alert alert-danger" role="alert"><strong>Boo!</strong> There are no venues set.</div>
+	{% endif %}
+</div>
+
+{% endblock %}

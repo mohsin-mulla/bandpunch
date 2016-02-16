@@ -1,0 +1,50 @@
+{% extends 'ticket/base.html' %}
+
+{% load staticfiles %}
+{% block body_block %}
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+			<div class="page-header">
+				<h1>
+					{{ event.name }}<br />
+					<small>At {{ event.venue }}</small>
+				</h1>
+			</div>
+			<dl>
+				<dt>
+					Event Description
+				</dt>
+				<dd>
+					{{ event.description }}<br /><br />
+				</dd>
+				<dt>
+					Venue Description
+				</dt>
+				<dd>
+					{{ event.venue.description }}<br /><br />
+				</dd>
+			</dl>
+			<div class="row clearfix">
+				<div class="col-md-6">
+					<img alt="{{ event.artists.image }}" src="/media/{{ event.artists.all.image }}" />
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 column">
+			<p>
+				<h4>Timing Information</h4>
+					<p>
+						Start Time: {{ event.start_time }}<br />
+						End Time: {{ event.end_time }}<br />
+						Curfew: {{ event.curfew_time }}<br /><br /><br />
+				<h4>Ticket Price</h4>
+					<p>£{{ event.price }}</p><br /><br />
+			</p>
+			<a href="/cart/add?id={{ event.id }}"><button type="button" class="btn btn-primary">Add to Basket</button></a>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
